@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873752584884",
+    "project_id": "littleexplorer-36f79",
+    "storage_bucket": "littleexplorer-36f79.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873752584884:android:861322c6e44fca2f732de1",
+        "android_client_info": {
+          "package_name": "Little_Explorer.example.little_explorer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABiRtbeymr1c1oVGfNatGM0Araki6Olmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
