@@ -76,6 +76,10 @@ flutter:
     - assets/splashScrn/SplashScreen.png
     - assets/splashScrn/logo.png
     - assets/splashScrn/name.png
+    - assets/pages/login/background.png
+    - assets/pages/login/logo.png
+    - assets/pages/login/line.png
+
 
     - assets/audio/bgmusic.mp3
 
@@ -99,6 +103,9 @@ flutter:
     - family: InstrumentSans
       fonts:
         - asset: assets/fonts/InstrumentSans-Bold.ttf
+    - family: ADLaMDisplay
+      fonts:
+        - asset: assets/fonts/ADLaMDisplay-Regular.ttf
 
 
   #
