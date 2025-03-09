@@ -46,7 +46,27 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(223, 175, 98, 1),
+        title: Text(
+          "Log In",
+          style: TextStyle(
+              color: Color.fromRGBO(181, 132, 54, 1),
+              fontSize: 40,
+              fontFamily: "InstrumentSans"),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.more_vert,
+                size: 40, color: Color.fromRGBO(181, 132, 54, 1)),
+            onPressed: () {
+              // Add action for menu
+            },
+          ),
+        ],
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

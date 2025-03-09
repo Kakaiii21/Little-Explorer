@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:little_explorer/pages/login_singup.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
   await Firebase.initializeApp(); // Initialize Firebase
-  runApp(const LittleExplorer());
+  runApp(const splashScreen());
 }
 
 // Singleton AudioManager to manage background music
@@ -71,93 +72,47 @@ class _LittleExplorerState extends State<LittleExplorer>
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class splashScreen extends StatelessWidget {
+  const splashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-        );
-      },
-      child: Scaffold(
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
         body: Stack(
+          fit: StackFit.expand,
           children: [
-            // Background color
-            Container(
+            // 🔹 Background Image (Fully Responsive)
+            Image.asset(
+              'assets/splashScrn/SplashScreen.png',
+              fit: BoxFit.cover,
               width: screenWidth,
-              height: screenHeight,
-              color: const Color.fromARGB(255, 28, 196, 171),
+              height: screenHeight, // Responsive height
             ),
 
-            // Background circles
-            _buildCircle(
-                screenHeight * 0.09, screenWidth * 0.59, screenWidth * 0.3),
-            _buildCircle(
-                screenHeight * -0.10, screenWidth * -0.2, screenWidth * 0.5),
-            _buildCircle(
-                screenHeight * 0.2, screenWidth * 0.2, screenWidth * 0.18),
-            _buildCircle(
-                screenHeight * 0.5, screenWidth * 0.2, screenWidth * 0.4),
-            _buildCircle(
-                screenHeight * 0.35, screenWidth * 0.55, screenWidth * 0.4),
-            _buildCircle(
-                screenHeight * 0.9, screenWidth * 0.55, screenWidth * 0.3),
-            _buildCircle(
-                screenHeight * 0.78, screenWidth * 0.65, screenWidth * 0.1),
-            _buildCircle(
-                screenHeight * 0.8, screenWidth * 0.1, screenWidth * 0.2),
-            _buildCircle(
-                screenHeight * 0.1, screenWidth * 0.9, screenWidth * 0.8),
-
-            // Centered content (logo + text)
+            // 🔹 Bigger Logo in AnimatedSplashScreen (Responsive Scaling)
             Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/logo_littleEx.png",
-                    width: screenWidth * 0.8,
-                    height: screenWidth * 0.8,
-                    fit: BoxFit.contain,
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    "Little Explorers",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.08, // Responsive font size
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white,
-                      fontFamily: "IrishGrover",
-                    ),
-                  ),
-                ],
+              child: AnimatedSplashScreen(
+                duration: 3500,
+                splash: Transform.scale(
+                  scale: screenWidth / 100, // Adjust dynamically
+                  child: Image.asset('assets/splashScrn/logo.png'),
+                ),
+                nextScreen: LoginScreen(),
+                backgroundColor: Colors.transparent,
+                splashTransition: SplashTransition.fadeTransition,
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // Function to build circle images
-  Widget _buildCircle(double top, double left, double size) {
-    return Positioned(
-      top: top,
-      left: left,
-      child: Image.asset(
-        "assets/images/circle.png",
-        width: size,
       ),
     );
   }

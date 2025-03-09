@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "Little_Explorer.example.little_explorer"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
